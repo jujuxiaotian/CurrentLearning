@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace ClassLibrary1
+namespace DevAndEnv
 {
-    public class Class1
+    public class OpenClient
     {
         public static void Main(string[] args)
         {
@@ -17,8 +17,15 @@ namespace ClassLibrary1
                 proc = new Process();
                 proc.StartInfo.WorkingDirectory = targetDir;
                 proc.StartInfo.FileName = "ExitCopyKzjhAndOpen.bat";
-                proc.StartInfo.Arguments = string.Format("10");//this is argument
+                proc.StartInfo.Arguments = string.Format("/c ");//this is argument
+
+                //proc.StartInfo.UseShellExecute = false;//是否使用操作系统shell启动
+                //proc.StartInfo.RedirectStandardInput = true;//接受来自调用程序的输入信息
+                //proc.StartInfo.RedirectStandardOutput = true;//由调用程序获取输出信息
+                //proc.StartInfo.RedirectStandardError = true;//重定向标准错误输出
+                
                 proc.StartInfo.CreateNoWindow = false;
+                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 proc.Start();
                 proc.WaitForExit();
             }
